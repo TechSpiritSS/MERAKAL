@@ -1,0 +1,20 @@
+// schema.prisma
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+
+
+model Task {
+  id        Int       @id @default(autoincrement())
+  endpoint  String
+  status    String
+  data      Json?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
