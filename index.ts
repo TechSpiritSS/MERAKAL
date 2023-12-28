@@ -18,9 +18,6 @@ const authenticate = async (
   const token = req.headers.authorization;
 
   if (token !== `Bearer ${process.env.API_TOKEN}`) {
-    console.log('token', token);
-    console.log('process.env.API_TOKEN', process.env.API_TOKEN);
-
     return res.status(401).json({ error: 'Unauthorized' });
   }
   next();
